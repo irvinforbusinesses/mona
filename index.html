@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mona Moreno</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background: #111;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-top: 1.5rem;
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 2.2rem;
+      margin-top: 0.25rem;
+      color: #ccc;
+      font-weight: 600;
+      font-family: 'Poppins', sans-serif;
+      font-style: normal;
+      letter-spacing: 0.04em;
+    }
+
+    .carousel-container {
+      width: 100vw;
+      overflow: hidden;
+      margin: 1rem 0;
+    }
+
+    .carousel-track {
+      display: flex;
+      width: max-content;
+      animation: scroll 18s linear infinite;
+      height: 300px;
+    }
+
+    .carousel-item {
+      min-width: 150px;
+      margin: 0 5px;
+      flex-shrink: 0;
+      cursor: pointer;
+    }
+
+    .carousel-item img,
+    .carousel-item video {
+      width: 100%;
+      height: 100%;
+      border-radius: 10px;
+      object-fit: cover;
+      transition: opacity 0.3s;
+    }
+
+    .carousel-item img:hover {
+      opacity: 0.65;
+    }
+
+    @keyframes scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    @keyframes float-glow {
+      0% {
+        transform: translateY(0);
+        filter: brightness(1);
+      }
+      50% {
+        transform: translateY(-4px);
+        filter: brightness(1.15);
+      }
+      100% {
+        transform: translateY(0);
+        filter: brightness(1);
+      }
+    }
+
+    .buttons {
+      text-align: center;
+      margin: 2rem 0;
+    }
+
+    .buttons a {
+      display: inline-block;
+      margin: 0.5rem;
+      padding: 1rem 2rem;
+      background: #f26eaa;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: transform 0.3s, background 0.3s;
+      font-weight: 600;
+      animation: float-glow 3.5s ease-in-out infinite;
+      display: inline-block;
+    }
+
+    .buttons a:hover {
+      transform: scale(1.1);
+      background: #e05591;
+    }
+
+    .social-icons {
+      text-align: center;
+      margin: 1rem 0 2rem;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .social-icons a {
+      display: inline-block;
+    }
+
+    .social-icons img {
+      width: 40px;
+      height: 40px;
+      filter: brightness(0) invert(1);
+      transition: transform 0.3s;
+      animation: float-glow 3.5s ease-in-out infinite;
+      display: inline-block;
+    }
+
+    .social-icons img:hover {
+      transform: scale(1.2);
+    }
+
+    .lightbox {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: rgba(0, 0, 0, 0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+
+    .lightbox-content {
+      position: relative;
+      width: 85vw;
+      height: 85vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lightbox img,
+    .lightbox video {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      border-radius: 10px;
+    }
+
+    .lightbox .close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 2.5rem;
+      color: white;
+      cursor: pointer;
+      z-index: 1100;
+      background: rgba(0,0,0,0.5);
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      line-height: 40px;
+      text-align: center;
+      user-select: none;
+      transition: background 0.3s;
+    }
+
+    .lightbox .close:hover {
+      background: rgba(255,255,255,0.3);
+    }
+
+    footer p {
+      text-align: center;
+      color: #888;
+      font-size: 0.8rem;
+      margin: 2rem 0;
+    }
+
+    footer#promo-footer {
+      background-color: #fff;
+      color: #111;
+      font-weight: 600;
+      padding: 1rem 0;
+      cursor: pointer;
+      text-align: center;
+      font-family: 'Poppins', sans-serif;
+      letter-spacing: 0.03em;
+      user-select: none;
+      transition: background-color 0.3s;
+    }
+
+    footer#promo-footer:hover {
+      background-color: #f0f0f0;
+    }
+
+    @media (min-width: 601px) {
+      .carousel-item {
+        min-width: 210px;
+        margin: 0 7px;
+      }
+      .carousel-track {
+        height: 420px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 1.5rem;
+      }
+
+      h2 {
+        font-size: 1.2rem;
+      }
+
+      .carousel-track {
+        height: 350px;
+      }
+
+      .carousel-item {
+        min-width: 224px;
+        margin: 0 4.2px;
+      }
+
+    .buttons a {
+  display: block;
+  width: 70%;
+  max-width: 320px;
+  margin: 0.5rem auto;
+  text-align: center;
+  padding: 0.85rem;
+  font-size: 1rem;
+}
+      .social-icons img {
+        width: 30px;
+        height: 30px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>🤞 Mona Moreno ✌️</h1>
+  <h2>I am just a girl who likes to yap about makeup, skincare, and fashion.❤️</h2>
+
+  <div class="carousel-container">
+    <div class="carousel-track" id="carousel1"></div>
+  </div>
+
+  <div class="buttons" id="buttons-main">
+    <a href="https://www.instagram.com/yourmmona/" aria-label="Visit my YouTube channel">My Instagram💫</a>
+    <a href="https://www.facebook.com/yourmmona/" aria-label="Join my Discord server">My Facebook Page 🎮</a>
+    <a href="https://www.youtube.com/@yourmmona" aria-label="Visit my Twitch profile">My Youtube Channel 🕹️</a>
+    <a href="https://www.tiktok.com/@yourmmona" aria-label="Visit my TikTok profile">My Tiktok 👑</a>
+    <a href="https://www.instagram.com/mona_creativestudio/" aria-label="Visit my Instagram profile">My Creative Studio ❤️</a>
+    <a href="mailto:monabymonics@gmail.com" aria-label="Email me for business inquiries">My email for businesses🧑‍💼</a>
+  </div>
+
+  <div class="social-icons">
+    <a href="https://www.tiktok.com/@yourmmona" target="_blank" aria-label="TikTok profile">
+      <img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" alt="TikTok">
+    </a>
+    <a href="https://www.instagram.com/yourmmona/" target="_blank" aria-label="Instagram profile">
+      <img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png" alt="Instagram">
+    </a>
+  </div>
+
+  <div class="carousel-container">
+    <div class="carousel-track" id="carousel2"></div>
+  </div>
+
+  <div class="lightbox" id="lightbox" style="display:none">
+    <div class="lightbox-content" id="lightbox-content"></div>
+    <span class="close" onclick="closeLightbox()" aria-label="Close lightbox">✕</span>
+  </div>
+
+ <footer id="promo-footer" onclick="window.open('https://irvyandl.github.io/PageDesignWithIrvin/', '_blank')"
+    role="link" tabindex="0" onkeypress="if(event.key==='Enter'){this.click();}">
+  Click Here to have a website like this!
+  </footer>
+  
+  <footer>
+    <p>&copy; Irvin Prado. Ascende Superious - Seek Higher Things</p>
+  </footer>
+
+  <script>
+    const videos = [
+      'https://github.com/irvinforbusinesses/mona/raw/refs/heads/main/assets/VID-20250730-WA0083.mp4',
+      'https://github.com/irvinforbusinesses/mona/raw/refs/heads/main/assets/Vid1.mp4',
+      'https://github.com/irvinforbusinesses/mona/raw/refs/heads/main/assets/Video3.mp4'
+    ];
+
+    const images = [
+      'https://github.com/irvinforbusinesses/mona/blob/main/assets/Photo1.jpg?raw=true',
+      'https://github.com/irvinforbusinesses/mona/blob/main/assets/Photo2%20.jpg?raw=true',
+      'https://github.com/irvinforbusinesses/mona/blob/main/assets/Photo3.jpg?raw=true',
+      'https://github.com/irvinforbusinesses/mona/blob/main/assets/Photo4.jpg?raw=true',
+      'https://github.com/irvinforbusinesses/mona/blob/main/assets/Photo5.jpg?raw=true',
+      'https://github.com/irvinforbusinesses/mona/blob/main/assets/Photo7.jpg?raw=true',
+    ];
+
+    function shuffle(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
+    }
+
+    function createCarouselItems(container, imgs, isBlurred = false, videos = []) {
+      const fragment = document.createDocumentFragment();
+      let videoIndex = 0;
+
+      imgs.forEach((img, i) => {
+        const item = document.createElement('div');
+        item.className = 'carousel-item';
+        item.innerHTML = `<img src="${img}" onclick="openLightbox('${img}', false)">`;
+        fragment.appendChild(item);
+
+        if (!isBlurred && (i + 1) % 2 === 0 && videoIndex < videos.length) {
+          const video = document.createElement('div');
+          video.className = 'carousel-item';
+          video.innerHTML = `<video autoplay loop muted playsinline onclick="openLightbox('${videos[videoIndex]}', true)">
+                               <source src="${videos[videoIndex]}" type="video/mp4">
+                             </video>`;
+          fragment.appendChild(video);
+          videoIndex++;
+        }
+      });
+
+      imgs.forEach((img, i) => {
+        const item = document.createElement('div');
+        item.className = 'carousel-item';
+        item.innerHTML = `<img src="${img}" onclick="openLightbox('${img}', false)">`;
+        fragment.appendChild(item);
+
+        if (!isBlurred && (i + 1) % 2 === 0 && videoIndex < videos.length * 2) {
+          const videoIdx = videoIndex - videos.length;
+          if (videoIdx < videos.length) {
+            const video = document.createElement('div');
+            video.className = 'carousel-item';
+            video.innerHTML = `<video autoplay loop muted playsinline onclick="openLightbox('${videos[videoIdx]}', true)">
+                                 <source src="${videos[videoIdx]}" type="video/mp4">
+                               </video>`;
+            fragment.appendChild(video);
+            videoIndex++;
+          }
+        }
+      });
+
+      container.appendChild(fragment);
+    }
+
+    const carousel1 = document.getElementById('carousel1');
+    const carousel2 = document.getElementById('carousel2');
+    const shuffledNormal = shuffle([...images]);
+
+    createCarouselItems(carousel1, shuffledNormal, false, videos);
+    createCarouselItems(carousel2, shuffledNormal, false, videos);
+
+    function openLightbox(src, isVideo = false) {
+      const lightbox = document.getElementById('lightbox');
+      const content = document.getElementById('lightbox-content');
+      content.innerHTML = isVideo
+        ? `<video src="${src}" autoplay loop muted controls style="max-width:100%; max-height:100%; border-radius: 10px;"></video>`
+        : `<img src="${src}">`;
+      lightbox.style.display = 'flex';
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightbox').style.display = 'none';
+      document.getElementById('lightbox-content').innerHTML = '';
+    }
+  </script>
+</body>
+</html>
